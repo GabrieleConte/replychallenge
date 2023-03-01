@@ -18,13 +18,23 @@ with open("file.txt") as f:
         demone = Demon(statsDemone[0], statsDemone[1], statsDemone[2], statsDemone[3], x)
         demons.append(demone)
     i = 0
-    while turns >= 0:
+    output=[]
+    f = open("result.txt", "x")
+    while turns > 0:
+        pandora.aggPunteggio()
+        pandora.aggStamina()
+        if pandora.stamina > 0:
+            flag = True
+            i = 0
+            while flag and i < ndemons:
+                if demons[i].sc < pandora.stamina and i not in output:
+                    flag = False
+                    pandora.nemicoSconfitto(demons[i])
+                    output.append(i)
+                    f.write(f"{i}\n")
+                else:
+                    i += 1
         turns -= 1
-        if demons[i].sc > pandora.stamina:
-            turns -= 1
-            i += 1
-        else:
-            pass
         ##implementare il modo in cui pandora sceglie i nemici
         # se un nemico non è affrontabile, aspetta un turno
         # se è affrontabile, scala la stamina a pandora e aggiorna le ricompense del demone
