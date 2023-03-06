@@ -35,6 +35,7 @@ with open("file.txt") as f:
                 else:
                     i += 1
         turns -= 1
+
         ##implementare il modo in cui pandora sceglie i nemici
         # se un nemico non è affrontabile, aspetta un turno
         # se è affrontabile, scala la stamina a pandora e aggiorna le ricompense del demone

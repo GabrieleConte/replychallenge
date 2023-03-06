@@ -19,11 +19,14 @@ class Pandora:
             for _ in range(demone.na-len(self.ricompenseFrammenti)):
                 self.ricompenseFrammenti.append(0)
         for i in range(demone.na):
-            self.ricompenseFrammenti[i] = self.ricompenseFrammenti + demone.values[i] if self.ricompenseFrammenti[
+            self.ricompenseFrammenti[i] = self.ricompenseFrammenti[i] + demone.values[i] if self.ricompenseFrammenti[
                 i] else demone.values[i]
+        self.stamina-= demone.sc
 
     def aggPunteggio(self):
         self.frammenti += self.ricompenseFrammenti.pop(0) if self.ricompenseFrammenti[0] else self.frammenti
 
     def aggStamina(self):
-        pass
+        self.stamina= self.stamina + self.ricompenseStamina.pop(0) if self.ricompenseStamina[0] else self.stamina
+        if self.stamina>20:
+            self.stamina=20
