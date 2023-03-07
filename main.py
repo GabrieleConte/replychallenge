@@ -14,27 +14,29 @@ with open("file.txt") as f:
         statsDemone = [eval(i) for i in statsDemone]
         x = []
         for j in range(statsDemone[3]):
-            x.append(statsDemone[j + 3])
+            x.append(statsDemone[j + 4])
         demone = Demon(statsDemone[0], statsDemone[1], statsDemone[2], statsDemone[3], x)
         demons.append(demone)
-    print(demons[0].sc)
     i = 0
     output = []
     while turns > 0:
         pandora.aggPunteggio()
         pandora.aggStamina()
+        print(f"turno{turns}")
+        print(pandora.stamina)
         if pandora.stamina > 0:
             flag = True
-            i = 0
+            i =0
             while flag and i <= len(demons) - 1:
                 if demons[i].sc < pandora.stamina and i not in output:
-                    print(demons[i].sc)
+                    print(f"demone {i}")
                     flag = False
                     pandora.nemicoSconfitto(demons[i])
                     print(pandora.stamina)
                     output.append(i)
                 else:
                     i += 1
+
         turns -= 1
 n = open('output.txt', 'w')
 for index in output:
